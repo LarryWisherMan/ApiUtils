@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{B8EFCA5F-814F-285C-A8CB-F00F14650265}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiUtils.Binary", "source\ApiUtils.Binary\ApiUtils.Binary.csproj", "{0AD46CE8-4BCF-8305-3A8B-B64EE89781EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AD46CE8-4BCF-8305-3A8B-B64EE89781EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD46CE8-4BCF-8305-3A8B-B64EE89781EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD46CE8-4BCF-8305-3A8B-B64EE89781EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD46CE8-4BCF-8305-3A8B-B64EE89781EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0AD46CE8-4BCF-8305-3A8B-B64EE89781EF} = {B8EFCA5F-814F-285C-A8CB-F00F14650265}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E2852C8-6190-4911-ACF9-C69F03B67831}
+	EndGlobalSection
+EndGlobal

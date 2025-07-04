@@ -19,6 +19,9 @@
     "files.associations": {
         "*.ps1xml": "xml"
     },
+
+    "dotnet.defaultSolution": "source/ApiUtils.Binary/ApiUtils.Binary.csproj",
+
     "cSpell.words": [
         "COMPANYNAME",
         "ICONURI",
@@ -37,5 +40,6 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false,
         "files.encoding": "utf8"
-    }
+    },
+
 }

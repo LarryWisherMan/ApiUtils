@@ -1,0 +1,21 @@
+{
+    "folders": [
+        {
+            "name": "Root",
+            "path": ".."
+        },
+        {
+            "name": "ApiUtils.Binary",
+            "path": "../source/ApiUtils.Binary"
+        },
+        {
+            "name": "Built Module",
+            "path": "../output/module/ApiUtils"
+        }
+    ],
+
+    "settings": {
+        "terminal.integrated.cwd": "${workspaceFolder:Root}",
+        "powershell.cwd": "Root"
+    }
+}

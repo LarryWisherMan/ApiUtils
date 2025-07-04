@@ -15,3 +15,18 @@ output/
 markdownissues.txt
 node_modules
 package-lock.json
+
+# .NET Build outputs
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+
+# Build results
+[Dd]ebug/
+[Rr]elease/

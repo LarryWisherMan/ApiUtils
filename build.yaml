@@ -17,23 +17,31 @@ Encoding: UTF8
 
 # Suffix to add to Root module PSM1 after merge (here, the Set-Alias exporting IB tasks)
 # suffix: suffix.ps1
-# prefix: prefix.ps1
+prefix: prefix.ps1
 VersionedOutputDirectory: true
 
-####################################################
-#      ModuleBuilder Submodules Configuration      #
-####################################################
 
-NestedModule:
-#  HelperSubmodule: # This is the first submodule to build into the output
-#    Path: ./*/Modules/HelperSubmodule/HelperSubmodule.psd1
-#    #  is trimmed (remove metadata & Prerelease tag) and OutputDirectory expanded (the only one)
-#    OutputDirectory: ///Modules/HelperSubmodule
-#    VersionedOutputDirectory: false
-#    AddToManifest: false
-#    SemVer: 
-#    # suffix:
-#    # prefix:
+
+####################################################
+#         .NET Project Configuration               #
+####################################################
+DotNetProjects:
+  - Name: ApiUtils.Binary
+    Source: source/ApiUtils.Binary
+    OutputName: ApiUtils.Binary
+    CopyToRoot: false         # Copy to framework-specific subfolders
+    IncludePdb: true          # Include debug symbols for debugging
+    IncludeXml: true          # Include XML documentation
+    CopyAllFrameworks: true   # Copy all target frameworks, not just preferred
+
+DotNetTargetFrameworks:
+  - net48       # For PowerShell 5.1
+  - net6.0      # For PowerShell 7+
+
+# Optional: Override .NET build settings
+Configuration: Release        # Debug or Release
+DotNetVerbosity: minimal     # quiet, minimal, normal, detailed, diagnostic
+
 
 ####################################################
 #       Sampler Pipeline Configuration             #
@@ -47,7 +55,7 @@ BuildWorkflow:
   build:
     - Clean
     - Build_Module_ModuleBuilder
-    - Build_NestedModules_ModuleBuilder
+    - Build_DotNet_ModuleBuilder
     - Create_changelog_release_output
 
 
@@ -140,9 +148,3 @@ TaskHeader: |
   Write-Build DarkGray "  $Path"
   Write-Build DarkGray "  $($Task.InvocationInfo.ScriptName):$($Task.InvocationInfo.ScriptLineNumber)"
   ""
-
-
-
-
-
-

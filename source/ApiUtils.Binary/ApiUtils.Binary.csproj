@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net48;net6.0</TargetFrameworks>
+        <AssemblyName>ApiUtils.Binary</AssemblyName>
+        <RootNamespace>ApiUtils</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <!-- GitVersion properties -->
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+
+        <!-- Use GitVersion variables if available, fallback to defaults -->
+        <Version Condition="'$(GitVersion_SemVer)' != ''">$(GitVersion_SemVer)</Version>
+        <AssemblyVersion Condition="'$(GitVersion_AssemblySemVer)' != ''">
+            $(GitVersion_AssemblySemVer)</AssemblyVersion>
+        <FileVersion Condition="'$(GitVersion_AssemblySemFileVer)' != ''">
+            $(GitVersion_AssemblySemFileVer)</FileVersion>
+        <InformationalVersion Condition="'$(GitVersion_InformationalVersion)' != ''">
+            $(GitVersion_InformationalVersion)</InformationalVersion>
+
+        <!-- Fallback versions if GitVersion is not available -->
+        <Version Condition="'$(Version)' == ''">0.1.0</Version>
+        <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">0.1.0.0</AssemblyVersion>
+        <FileVersion Condition="'$(FileVersion)' == ''">0.1.0.0</FileVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="PowerShellStandard.Library" Version="5.1.1">
+            <PrivateAssets>all</PrivateAssets>
+            <ExcludeAssets>runtime</ExcludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>
