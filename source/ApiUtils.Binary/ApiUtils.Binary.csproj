@@ -5,6 +5,7 @@
         <RootNamespace>ApiUtils</RootNamespace>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <LangVersion>latest</LangVersion>
 
         <!-- GitVersion properties -->
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -24,10 +25,35 @@
         <FileVersion Condition="'$(FileVersion)' == ''">0.1.0.0</FileVersion>
     </PropertyGroup>
 
+    <!-- Common packages for all target frameworks -->
     <ItemGroup>
         <PackageReference Include="PowerShellStandard.Library" Version="5.1.1">
             <PrivateAssets>all</PrivateAssets>
             <ExcludeAssets>runtime</ExcludeAssets>
         </PackageReference>
     </ItemGroup>
+
+    <!-- .NET Framework 4.8 specific packages -->
+    <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+        <PackageReference Include="System.Linq" Version="4.3.0" />
+    </ItemGroup>
+
+    <!-- .NET 6.0 specific packages (if any needed) -->
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <!-- .NET 6.0 has System.Text.Json, System.Net.Http, and System.Linq built-in -->
+        <!-- Add any .NET 6.0 specific packages here if needed -->
+    </ItemGroup>
+
+    <!-- Compiler constants for conditional compilation -->
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+        <DefineConstants>$(DefineConstants);NET48</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <DefineConstants>$(DefineConstants);NET6_0_OR_GREATER</DefineConstants>
+    </PropertyGroup>
 </Project>
