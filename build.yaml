@@ -23,24 +23,27 @@ VersionedOutputDirectory: true
 
 
 ####################################################
-#         .NET Project Configuration               #
+#          .NET Project Configuration              #
 ####################################################
+
 DotNetProjects:
-  - Name: ApiUtils.Binary
-    Source: source/ApiUtils.Binary
-    OutputName: ApiUtils.Binary
-    CopyToRoot: false         # Copy to framework-specific subfolders
-    IncludePdb: true          # Include debug symbols for debugging
-    IncludeXml: true          # Include XML documentation
-    CopyAllFrameworks: true   # Copy all target frameworks, not just preferred
+  - Name: ApiUtils.Cmdlets
+    Source: source/ApiUtils.Cmdlets
+    OutputName: ApiUtils.Cmdlets
+    CopyToRoot: false
+    IncludePdb: true
+    IncludeXml: true
+    TargetFrameworks:         # ← array
+      - net48
+      - net6.0
+    CopyAllFrameworks: true
 
 DotNetTargetFrameworks:
-  - net48       # For PowerShell 5.1
-  - net6.0      # For PowerShell 7+
+  - net48       # For PowerShell Desktop (5.1)
+  - net6.0      # For PowerShell Core (7.x)
 
-# Optional: Override .NET build settings
-Configuration: Release        # Debug or Release
-DotNetVerbosity: minimal     # quiet, minimal, normal, detailed, diagnostic
+Configuration: Release
+DotNetVerbosity: minimal
 
 
 ####################################################

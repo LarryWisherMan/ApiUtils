@@ -5,8 +5,8 @@
             "path": ".."
         },
         {
-            "name": "ApiUtils.Binary",
-            "path": "../source/ApiUtils.Binary"
+            "name": "ApiUtils.Cmdlets",
+            "path": "../source/ApiUtils.Cmdlets"
         },
         {
             "name": "Built Module",

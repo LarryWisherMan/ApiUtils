@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net48;net6.0</TargetFrameworks>
+        <AssemblyName>ApiUtils.Cmdlets</AssemblyName>
+        <RootNamespace>ApiUtils.Cmdlets</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+
+        <!-- GitVersion properties -->
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+
+        <Version Condition="'$(GitVersion_SemVer)' != ''">$(GitVersion_SemVer)</Version>
+        <AssemblyVersion Condition="'$(GitVersion_AssemblySemVer)' != ''">
+            $(GitVersion_AssemblySemVer)</AssemblyVersion>
+        <FileVersion Condition="'$(GitVersion_AssemblySemFileVer)' != ''">
+            $(GitVersion_AssemblySemFileVer)</FileVersion>
+        <InformationalVersion Condition="'$(GitVersion_InformationalVersion)' != ''">
+            $(GitVersion_InformationalVersion)</InformationalVersion>
+
+        <!-- Fallback versions -->
+        <Version Condition="'$(Version)' == ''">0.1.0</Version>
+        <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">0.1.0.0</AssemblyVersion>
+        <FileVersion Condition="'$(FileVersion)' == ''">0.1.0.0</FileVersion>
+    </PropertyGroup>
+
+    <!-- Dependencies shared by all TFMs -->
+    <ItemGroup>
+        <PackageReference Include="System.Text.Json" Version="6.0.11" />
+    </ItemGroup>
+
+    <!-- Dependencies only for net48 -->
+    <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+        <PackageReference Include="PowerShellStandard.Library" Version="5.1.1">
+            <PrivateAssets>all</PrivateAssets>
+            <ExcludeAssets>runtime</ExcludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.0">
+            <PrivateAssets>all</PrivateAssets>
+            <ExcludeAssets>runtime</ExcludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\ApiUtils.Models\ApiUtils.Models.csproj" />
+    </ItemGroup>
+
+
+</Project>
